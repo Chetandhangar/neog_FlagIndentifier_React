@@ -1,23 +1,50 @@
-import logo from './logo.svg';
+import React , {useState} from 'react';
 import './App.css';
 
+const countryFlags = {
+  "🇮🇳" : "India",
+  "🏴󠁧󠁢󠁳󠁣󠁴󠁿" : "Scotland",
+  "🏴󠁧󠁢󠁥󠁮󠁧󠁿" : "England",
+  "🏴󠁧󠁢󠁷󠁬󠁳󠁿" : "Wales",
+  "🇮🇹" : "Italy",
+  "🇧🇷" : "Brazil",
+  "🇨🇴" : "Colombia",
+  "🇩🇪" : "Germany",
+  "🇪🇸" : "Spain",
+  "🇵🇹" : "Portugal"
+  
+};
+
+
+
 function App() {
+
+  const [countryName, setCountryName] = useState('');
+
+  function inputHandler(event){
+
+    var userInput = event.target.value;
+    var countryName = countryFlags[userInput];
+
+    if(userInput in countryFlags)
+    {
+      setCountryName(countryName);
+    }
+    else{
+      setCountryName("Unable to identifi the Flag");
+    }
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+       <h1>Flag Identifier</h1>
       </header>
+
+      <div>
+      <input onChange={inputHandler}/>
+        <div>{countryName}</div>
+      </div>
     </div>
   );
 }
