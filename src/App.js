@@ -15,12 +15,14 @@ const countryFlags = {
   
 };
 
+var flagList = Object.keys(countryFlags);
 
 
 function App() {
 
   const [countryName, setCountryName] = useState('');
 
+  //function to handle User Input
   function inputHandler(event){
 
     var userInput = event.target.value;
@@ -35,6 +37,11 @@ function App() {
     }
   };
 
+  function flagClickHandle(flag) {
+    var countryName = countryFlags[flag];
+    setCountryName(countryName);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -42,8 +49,19 @@ function App() {
       </header>
 
       <div>
-      <input onChange={inputHandler}/>
-        <div>{countryName}</div>
+      <input onChange={inputHandler} className="txt-input"/>
+        <div className="country-name">{countryName}</div>
+        <div>
+          {flagList.map(flag=>{
+            return (
+              <div>
+                <ul>
+                  <li style={{cursor:"pointer"}} onClick={()=>flagClickHandle(flag)}>{flag}</li>
+                </ul>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
