@@ -1,6 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital@1&display=swap');
 
+body{
+  background-color: grey;
+}
 .App{
   text-align: center;
   font-family: 'Montserrat', sans-serif;
+  
 }
+
+.list-non-bullet{
+  list-style: none;
+}
+
+.list{
+  display: inline;
+  font-size: 4rem;
+}
+
+.country-name{
+  margin: 2rem;
+  font-size: large;
+  font-weight: bold;
+}
+

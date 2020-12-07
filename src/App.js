@@ -11,8 +11,9 @@ const countryFlags = {
   "🇨🇴" : "Colombia",
   "🇩🇪" : "Germany",
   "🇪🇸" : "Spain",
-  "🇵🇹" : "Portugal"
-  
+  "🇵🇹" : "Portugal",
+  "🇫🇷" : "France"
+   
 };
 
 var flagList = Object.keys(countryFlags);
@@ -44,25 +45,30 @@ function App() {
 
   return (
     <div className="App">
+
       <header className="App-header">
        <h1>Flag Identifier</h1>
       </header>
 
-      <div>
+     
       <input onChange={inputHandler} className="txt-input"/>
-        <div className="country-name">{countryName}</div>
+
+        <div className="country-name">
+          Country Name :  
+        {" "}{countryName}</div>
+
         <div>
+          <h2>Flags We have in our Database</h2>
           {flagList.map(flag=>{
             return (
-              <div>
-                <ul>
-                  <li style={{cursor:"pointer"}} onClick={()=>flagClickHandle(flag)}>{flag}</li>
+                <ul key={flag} className="list list-non-bullet">
+                  <li className="list" style={{cursor:"pointer"}} onClick={()=>flagClickHandle(flag)}>{flag}</li>
                 </ul>
-              </div>
+            
             );
           })}
         </div>
-      </div>
+
     </div>
   );
 }
